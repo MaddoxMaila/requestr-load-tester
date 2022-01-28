@@ -24,12 +24,15 @@ class Requestr:
 
             self.response = self.CONNECTION.getresponse()
 
-            return self.response.status, url
+            return "Status Code: {}".format(self.response.status), url
 
         except:
             return "Connection failed", url
 
-req = Requestr()
+    def create_queque(self, concurrent: int) -> None:
+        self.QUEUE = Queue(concurrent)
 
-print(req.make_request("http://46.101.125.57:4000/v1/11111111111111111111111111111111/reverseGeocode/-27.013837,27.738462.json"))
+# req = Requestr()
+
+# print(req.make_request("http://46.101.125.57:4000/v1/11111111111111111111111111111111/reverseGeocode/-27.013837,27.738462.json"))
 
