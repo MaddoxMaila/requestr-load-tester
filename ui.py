@@ -68,19 +68,21 @@ class UI :
         self.make_req_btn = Button(
             self.inputs_frame,
             text="Start Load Test",
-            command=lambda: self.reqs(self.url_text_entry.get())
+            command=lambda: self.req_btn_handle(self.url_text_entry.get())
         ).grid(
             row=6,
             column=0,
             columnspan=2
         )
     
-    def reqs(self, url: str):
+    def req_btn_handle(self, url: str):
         
         if url == "":
             print("URL Empty")
         else:
-            self.REQ_MSG, self.REQ_URL = req.make_request(url=url)
-            print(self.REQ_MSG)
-            print(self.REQ_URL)
+            req.set_req_url(url)
+            req.start()
+            # self.REQ_MSG, self.REQ_URL = req.make_request(url=url)
+            # print(self.REQ_MSG)
+            # print(self.REQ_URL)
 
